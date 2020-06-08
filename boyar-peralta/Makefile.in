@@ -1,0 +1,16 @@
+
+BP_ROOT = $(REPO_HOME)/boyar-peralta
+
+SBOX_BP_SBY   = $(BP_ROOT)/tb_bp_aes_sbox.sby
+
+SBOX_BP_FILES = $(BP_ROOT)/bp_aes_sbox_fwd.v   \
+                $(BP_ROOT)/bp_aes_sbox_inv.v   \
+                $(BP_ROOT)/bp_gf16_inv.v       \
+                $(BP_ROOT)/tb_bp_aes_sbox.v    \
+                $(BP_ROOT)/tb_sbox_grm.v
+
+$(eval $(call add_prove_target,bp_aes_sbox,$(SBOX_BP_SBY),$(SBOX_BP_FILES)))
+
+$(eval $(call add_synth_target,bp_aes_sbox_fwd,$(BP_ROOT)/bp_aes_sbox_fwd.v,bp_aes_sbox_fwd))
+$(eval $(call add_synth_target,bp_aes_sbox_inv,$(BP_ROOT)/bp_aes_sbox_inv.v,bp_aes_sbox_inv))
+$(eval $(call add_synth_target,bp_aes_sbox,$(BP_ROOT)/bp_aes_sbox.v,bp_aes_sbox))

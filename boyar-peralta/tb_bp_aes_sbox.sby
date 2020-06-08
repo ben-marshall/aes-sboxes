@@ -1,0 +1,26 @@
+
+[options]
+depth   3
+mode bmc
+
+[engines]
+smtbmc boolector
+
+[script]
+read_verilog -formal bp_aes_sbox_fwd.v
+read_verilog -formal bp_aes_sbox_inv.v
+read_verilog -formal bp_aes_sbox.v
+read_verilog -formal bp_gf16_inv.v
+read_verilog -formal tb_bp_aes_sbox.v
+read_verilog -formal tb_sbox_grm.v
+
+prep -top tb_bp_aes_sbox
+
+[files]
+boyar-peralta/bp_aes_sbox_fwd.v
+boyar-peralta/bp_aes_sbox_inv.v
+boyar-peralta/bp_aes_sbox.v
+boyar-peralta/bp_gf16_inv.v
+boyar-peralta/tb_bp_aes_sbox.v
+boyar-peralta/tb_sbox_grm.v
+
